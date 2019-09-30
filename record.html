@@ -1,0 +1,37 @@
+1.先创建react项目
+ npx create-react-app my-react
+
+2.进入项目   cd my-react
+
+3.启动项目   yarn start
+
+下载依赖：yarn add customize-cra styled-jsx react-app-rewired --dev
+
+4.customize-cra 负责合并webpack配置文件
+
+5. styled-jsx 负责 实现局部样式
+
+6.react-app-rewired 负责重新改写 项目的运行命令
+
+7.新建配置文件：config-overrides.js
+// config-overrides.js
+const { override, addBabelPlugins } = require('customize-cra');
+module.exports = override(
+  ...addBabelPlugins(
+    [
+      "styled-jsx/babel"
+    ]
+  )
+)
+
+8. 修改`package.json`配置文件的`script`字段
+"scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  }
+
+  9.增加less支持
+  yarn add styled-jsx-plugin-less@alpha  less --dev
+  在config-overrides.js中添加：{ "plugins": ["styled-jsx-plugin-less"] }
