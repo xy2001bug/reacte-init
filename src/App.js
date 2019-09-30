@@ -1,24 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+function App1() {
+  return (
+    <div className="App1">
+        <h1>一只特立独行的狼</h1>
+        <style jsx>{
+          `
+            .App1{
+              background-color:skyblue;
+            }
+          ` }
+        </style>
+    </div>
+  );
+}
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="hh11">我变颜色啦</h1>
+      <div className="test1">
+        <div className="test2">
+          测试less语法
+        </div>
+      </div>
+      <App1></App1>
+      <style jsx>{
+        `
+       .hh11{
+         background-color:red;
+       }
+       .test1{
+         .test2{
+           background-color:hotpink;
+         }
+       }
+       `
+      }
+      </style>
     </div>
   );
 }
