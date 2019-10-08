@@ -1,45 +1,55 @@
-import React from 'react';
-import './App.css';
+//简单的路由使用
+import React, { Fragment, Component } from "react";
+import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
 
-function App1() {
-  return (
-    <div className="App1">
-        <h1>一只特立独行的狼</h1>
-        <style jsx>{
-          `
-            .App1{
-              background-color:skyblue;
-            }
-          ` }
-        </style>
-    </div>
-  );
-}
 function App() {
-  return (
-    <div className="App">
-      <h1 className="hh11">我变颜色啦</h1>
-      <div className="test1">
-        <div className="test2">
-          测试less语法
-        </div>
-      </div>
-      <App1></App1>
-      <style jsx>{
-        `
-       .hh11{
-         background-color:red;
-       }
-       .test1{
-         .test2{
-           background-color:hotpink;
-         }
-       }
-       `
-      }
-      </style>
-    </div>
-  );
+    return (
+        <Fragment>
+            <Router>
+                <div>
+                    <Link to="/">首页</Link>
+                    <Link to="/User">用户</Link>
+                </div>
+                <div>
+                    <Switch>
+                        <Route path="/" exact component={Home}></Route>
+                        <Route path="/User" component={User}></Route>
+                    </Switch>
+                </div>
+            </Router>
+        </Fragment>
+    );
 }
 
+//首页组件
+class Home extends Component {
+    render() {
+        return <div>Home首页</div>;
+    }
+}
+//用户的组件
+class User extends Component {
+    state = {
+        list: [
+            {
+                id: 1,
+                name: "富婆一号"
+            },
+            { id: 2, name: "富婆二号" },
+            { id: 3, name: "富婆三号" }
+        ]
+    };
+    render() {
+        return (
+            <Fragment>
+                <div>
+                    12314
+                </div>
+                {this.state.list.map(v => (
+                    <div key={v.id}>{v.name} 的 详情</div>
+                ))}
+            </Fragment>
+        );
+    }
+}
 export default App;
